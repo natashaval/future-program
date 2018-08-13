@@ -1,0 +1,62 @@
+.slide-container {
+	margin: auto;
+	background-color: red;
+	position: relative;
+	max-width: 500px;
+	
+}
+
+.slide {
+	margin: 8% 0 0 2%;
+	opacity: 0;
+	position: absolute;
+	transition: opacity 1s;
+	max-height: 700px;
+	overflow: hidden;
+}
+
+.prev,.next {
+	position: absolute;
+	width: auto;
+	top: 40%;
+	margin: 60% 0;
+	font-size: 40px;
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+.prev:hover, .next:hover {
+	opacity: 0.8;
+}
+
+.next {
+	right: 0;
+}
+
+.showing {
+	opacity: 1;
+}
+
+.pagination {
+	background-color: blue;
+	margin: 0 2px;
+	width: 50%;
+	margin: auto;
+	text-align: center;
+}
+
+.dot {
+	margin: 0 5px;
+	height: 15px;
+	width: 15px;
+	background-color: yellow;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+
+.dot-active {
+	background-color: green;
+}
+
+/*transition animation keyframe*/

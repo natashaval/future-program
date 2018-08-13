@@ -1,0 +1,22 @@
+.slide-container {
+	display: inline;
+}
+
+.slide {
+	margin: 0 0 0 2%;
+	opacity: 0.3;
+	position: absolute;
+	transition: opacity 1s;
+}
+
+.nav-left{
+	background-color: green;
+}
+
+.nav-right {
+	background-color: red;
+}
+
+.slide-img {
+	background-color: beige;
+}

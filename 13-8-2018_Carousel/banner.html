@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Natasha_Carousel</title>
+	<link rel="stylesheet" type="text/css" href="css-banner.css">
+</head>
+<body>
+	<div class="slide-container">
+		<div class="slide showing">
+			<img src="https://www.static-src.com/siva/asset//08_2018/d1-update-semarak-asian-games.png">
+		</div>
+		<div class="slide">
+			<img src="https://www.static-src.com/siva/asset//07_2018/BRIasiangames-ian-d1-NEWREV.png">
+		</div>
+		<div class="slide">
+			<img src="https://www.static-src.com/siva/asset//07_2018/d1-spesiap-app-juli.png">
+		</div>
+		<div class="slide">
+			<img src="https://www.static-src.com/siva/asset//07_2018/CRS-Neo-Geo-Mini-Jul-18_D1.png">
+		</div>
+		<div class="slide">
+			<img src="https://www.static-src.com/siva/asset//08_2018/d1-transhello-august.png">
+		</div>
+		<div class="slide">
+			<img src="https://www.static-src.com/siva/asset//08_2018/August-Special-Double-Deals-D1.png">
+		</div>
+
+		
+		<a class="prev" onclick="plusSlides(-1)">&#9664;</a>
+		<a class="next" onclick="plusSlides(1)">&#9658;</a>
+		
+	</div>
+	<br>
+	<div class="pagination">
+			<span class="dot dot-active"></span> 
+			<span class="dot"></span> 
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
+		</div>
+
+	<script type="text/javascript">
+		//https://www.sitepoint.com/make-a-simple-javascript-slideshow-without-jquery/
+		let slides = document.getElementsByClassName("slide");
+		let dots = document.getElementsByClassName("dot");
+		console.log(slides);
+		let currentSlide = 0;
+		var slideInterval = setInterval(nextSlide, 2000);
+
+		function nextSlide() {
+			slides[currentSlide].className = 'slide';
+			dots[currentSlide].className = 'dot';
+			currentSlide = (currentSlide+1)%slides.length;
+			slides[currentSlide].className = 'slide showing';
+			dots[currentSlide].className = 'dot dot-active';
+		}
+/*
+	let slideIndex = 0;
+	//function autoslide
+	slideAuto = (slideIndex) => {
+		let slides = document.getElementsByClassName("slide");
+		for (i=0;i<slides.length;i++){
+			slides[i].style.display = "none";
+		}
+		slideIndex++;
+		//if (slideIndex > slides.length) slideIndex = 1;
+		//slides[slideIndex-1].style.display = "block";
+	}
+	setInterval(slideAuto, 2000);
+	slides[3].style.display = "block";
+	
+	*/
+
+</script>
+</body>
+</html>
