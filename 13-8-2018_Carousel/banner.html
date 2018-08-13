@@ -44,30 +44,49 @@
 		//https://www.sitepoint.com/make-a-simple-javascript-slideshow-without-jquery/
 		let slides = document.getElementsByClassName("slide");
 		let dots = document.getElementsByClassName("dot");
-		console.log(slides);
+		//console.log(slides);
 		let currentSlide = 0;
+
 		var slideInterval = setInterval(nextSlide, 2000);
+
+		//plusSlides(1);
+		
 
 		function nextSlide() {
 			slides[currentSlide].className = 'slide';
 			dots[currentSlide].className = 'dot';
 			currentSlide = (currentSlide+1)%slides.length;
+			console.log("saat ini dlm next" + currentSlide);
 			slides[currentSlide].className = 'slide showing';
 			dots[currentSlide].className = 'dot dot-active';
 		}
 
 		function plusSlides(n) {
+			clearInterval(slideInterval);
+			delete slideInterval;
+			// clearTimeout(timeout);
 			slides[currentSlide].className = 'slide';
 			dots[currentSlide].className = 'dot';
 			currentSlide = (currentSlide+n)%slides.length;
 			//else currentSlide = slides.length;
 			if (currentSlide < 0) currentSlide=slides.length-1;
+			//if (currentSlide > slides.length) currentSlide = 1;
 			console.log(currentSlide);
 			//nextSlide();
 			slides[currentSlide].className = 'slide showing';
 			dots[currentSlide].className = 'dot dot-active';
+			//var slideInterval = setInterval(nextSlide, 2000);
+			//var lanjutkan = setTimeout(setInterval(nextSlide, 2000),3000);
+			// var timeout = setTimeout(function(){
+			// 	var slideInterval = setInterval(plusSlides(1), 2000);
+			// 	console.log("ini harusnya berhenti");
+			// }, 2000);
+			//setTimeout(nextSlide, 2000);
 
+			var slideInterval = setTimeout(nextSlide, 2000);
+			//setTimeout(plusSlides(1), 2000);
 		}
+		//var slideInterval = setInterval(plusSlides(1),2000);
 /*
 	let slideIndex = 0;
 	//function autoslide
