@@ -22,7 +22,7 @@
 	margin: 60% 0;
 	font-size: 40px;
 	cursor: pointer;
-	opacity: 0.5;
+	opacity: 0.4;
 }
 
 .prev:hover, .next:hover {
@@ -38,7 +38,7 @@
 }
 
 .pagination {
-	background-color: blue;
+	
 	margin: 0 2px;
 	width: 50%;
 	margin: auto;
@@ -49,14 +49,14 @@
 	margin: 0 5px;
 	height: 15px;
 	width: 15px;
-	background-color: yellow;
+	background-color: #bbbbbb;
 	border-radius: 50%;
 	display: inline-block;
 	transition: background-color 0.6s ease;
 }
 
 .dot-active {
-	background-color: green;
+	background-color: #717171;
 }
 
 /*transition animation keyframe*/
