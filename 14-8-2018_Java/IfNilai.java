@@ -1,7 +1,8 @@
 public class IfNilai {
 	// ambil inputan melalui args
+
 	public static void main(String[] args){
-		int score;
+		int score;	
 
 		if (args.length != 1){
 			System.out.println("IfNilai <nilai>");
