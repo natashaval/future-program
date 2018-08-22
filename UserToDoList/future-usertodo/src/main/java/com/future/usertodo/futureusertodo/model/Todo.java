@@ -5,24 +5,20 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "Todo")
-
+@Table(name="todo")
 public class Todo extends AuditModel {
     @Id
     @GeneratedValue(generator = "todo_generator")
     @SequenceGenerator(
-            name = "todo_generator",
-            sequenceName = "todo_sequence"
+            name ="todo_generator",
+            sequenceName = "todo_sequence",
+            initialValue = 1
     )
     private Long id;
 
-    //@NotBlank
-    //panjang nama (maks varchar (50))
-    @Column(name = "title", nullable = false)
+    @Column(name = "todo_title", nullable = false)
     private String title;
 
     @Column(columnDefinition = "text")
@@ -36,36 +32,36 @@ public class Todo extends AuditModel {
 
     //Getter and Setter
 
-
-    public Long getId() {
-        return id;
-    }
-
     public void setId(Long id) {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getTitle() {
-        return title;
+    public Long getId() {
+        return id;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getTitle() {
+        return title;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
 }

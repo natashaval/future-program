@@ -20,9 +20,9 @@ public class UserController {
     public Page<User> getUsers(Pageable pageable) {
         return userRepository.findAll(pageable);
     }
-/*
+
     @PostMapping("/users")
-    public User createUser(@Valid @RequestBody User user){
+    public User createUser(@Valid @RequestBody User user) {
         return userRepository.save(user);
     }
 
@@ -31,19 +31,18 @@ public class UserController {
                            @Valid @RequestBody User userRequest) {
         return userRepository.findById(userId)
                 .map(user -> {
-                    user.setName(userRequest.getName());
                     user.setUsername(userRequest.getUsername());
+                    user.setName(userRequest.getName());
                     return userRepository.save(user);
-                }).orElseThrow(()->new ResourceNotFoundException("User ID" + userId +"not found"));
+                }).orElseThrow(()-> new ResourceNotFoundException("User ID" + userId + "cannot be found!"));
     }
 
-    @DeleteMapping("users/{userId}")
+    @DeleteMapping("/users/{userId}")
     public ResponseEntity<?> deleteUser(@PathVariable Long userId) {
         return userRepository.findById(userId)
                 .map(user -> {
                     userRepository.delete(user);
                     return ResponseEntity.ok().build();
-                }).orElseThrow(()->new ResourceNotFoundException("User ID" + userId + "cannot be deleted"));
+                }).orElseThrow(() -> new ResourceNotFoundException("User ID" + userId + "cannot be deleted!"));
     }
-    */
 }
