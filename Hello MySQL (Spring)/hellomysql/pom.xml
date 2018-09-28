@@ -48,13 +48,13 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>nz.net.ultraq.thymeleaf</groupId>
-					<artifactId>thymeleaf-layout-dialect</artifactId>
-					<!--https://stackoverflow.com/questions/42028909/spring-boot-and-thymeleaf-cant-find-html-templates-->
-				</exclusion>
-			</exclusions>
+			<!--<exclusions>-->
+				<!--<exclusion>-->
+					<!--<groupId>nz.net.ultraq.thymeleaf</groupId>-->
+					<!--<artifactId>thymeleaf-layout-dialect</artifactId>-->
+					<!--&lt;!&ndash;https://stackoverflow.com/questions/42028909/spring-boot-and-thymeleaf-cant-find-html-templates&ndash;&gt;-->
+				<!--</exclusion>-->
+			<!--</exclusions>-->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -86,21 +86,18 @@
 		<!--</dependency>-->
 
 		<!--custom layout dialect thymeleaf-->
+
+
 		<dependency>
-			<groupId>org.thymeleaf</groupId>
-			<artifactId>thymeleaf</artifactId>
-			<version>3.0.9.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.thymeleaf</groupId>
-			<artifactId>thymeleaf-spring4</artifactId>
-			<version>3.0.9.RELEASE</version>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+			<version>2.3.0</version>
 		</dependency>
 
-		<!--<dependency>-->
-			<!--<groupId>nz.net.ultraq.thymeleaf</groupId>-->
-			<!--<artifactId>thymeleaf-layout-dialect</artifactId>-->
-		<!--</dependency>-->
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

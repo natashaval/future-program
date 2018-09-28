@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>User Profile Custom UserDetails</title>
+</head>
+<body>
+<table border="2">
+    <tr>
+        <td th:text="${currentUser.name}" />
+        <td th:text="${currentUser.email}" />
+        <td th:text="${currentUser.username}" />
+        <td th:text="${currentUser.password}" />
+    </tr>
+</table>
+</body>
+</html>

@@ -1,32 +1,28 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 </head>
 <body>
-<div th:fragment="footer">
-
-    <div class="container">
-
+<th:block th:fragment="footer">
         <footer>
             <!-- this is footer -->
-            © 2017 mkyong.com
-            <span sec:authorize="isAuthenticated()">
-                | Logged user: <span sec:authentication="name"></span> |
-                Roles: <span sec:authentication="principal.authorities"></span> |
-                <a th:href="@{/logout}">Sign Out</a>
-                <br>
-                <!--<p>Nama1: <span th:text="@{principal.getName()}"></span></p>-->
-                <!--<p>Nama2: <span th:text="@{principal.name}"></span></p>-->
-            </span>
-
+            <div class="container">
+                <span sec:authorize="isAuthenticated()">
+                    | Logged user: <span sec:authentication="name"></span> |
+                    Roles: <span sec:authentication="principal.authorities"></span> |
+                    <a th:href="@{/logout}">Sign Out</a>
+                    <br>
+                    <!--<p>Nama1: <span th:text="@{principal.getName()}"></span></p>-->
+                    <!--<p>Nama2: <span th:text="@{principal.name}"></span></p>-->
+                </span>
+            </div>
             <script type="text/javascript"
                     src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         </footer>
     </div>
 
-</div>
+</th:block>
 </body>
 </html>

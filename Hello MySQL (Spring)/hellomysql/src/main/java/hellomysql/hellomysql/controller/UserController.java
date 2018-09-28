@@ -1,22 +1,26 @@
 package hellomysql.hellomysql.controller;
 
-import hellomysql.hellomysql.entity.User;
-import hellomysql.hellomysql.repository.UserRepository;
+import hellomysql.hellomysql.entity.CurrentUser;
+import hellomysql.hellomysql.repository.CurrentUserRepository;
+import hellomysql.hellomysql.service.UserPrincipal;
 import hellomysql.hellomysql.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Security;
 import java.util.List;
 
 @Controller
 @RequestMapping(path = "/demo")
 public class UserController {
     @Autowired
-    private UserRepository userRepository;
+    private CurrentUserRepository userRepository;
 
     @Autowired
     private UserService userService;
@@ -25,7 +29,7 @@ public class UserController {
     public @ResponseBody String addNewUser (@RequestParam String name, @RequestParam String email) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
-        User userbaru = new User();
+        CurrentUser userbaru = new CurrentUser();
         userbaru.setName(name);
         userbaru.setEmail(email);
         userRepository.save(userbaru);
@@ -33,13 +37,13 @@ public class UserController {
     }
 
     @GetMapping(path="/all")
-    public @ResponseBody Iterable<User> getAllUsers(){
+    public @ResponseBody Iterable<CurrentUser> getAllUsers(){
         return userRepository.findAll();
     }
 
     @GetMapping(path = "/userservice")
     public String userService(Model model){
-        List<User> userList = userRepository.findAll();
+        List<CurrentUser> userList = userRepository.findAll();
         model.addAttribute(userList);
         return "userservice.html";
     }
@@ -53,9 +57,18 @@ public class UserController {
 //        return modelAndView;
 //    }
     public String userserviceOrang(Model model, @PathVariable String name){
-        List<User> userList = userService.findByName(name);
+        List<CurrentUser> userList = userService.findByName(name);
         model.addAttribute(userList);
         return "userservice.html";
+    }
+
+    @GetMapping("/userprofile")
+    public String profile(Model model){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CurrentUser currentUser = (CurrentUser)auth.getPrincipal();
+        System.out.println(currentUser);
+        model.addAttribute(currentUser);
+        return "userprofile.html";
     }
 
 }

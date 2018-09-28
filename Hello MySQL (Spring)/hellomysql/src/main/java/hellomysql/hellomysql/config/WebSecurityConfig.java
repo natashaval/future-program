@@ -1,8 +1,11 @@
 package hellomysql.hellomysql.config;
 
+import com.sun.org.apache.xerces.internal.parsers.SecurityConfiguration;
+import hellomysql.hellomysql.service.InternalUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -24,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/","/home","/homeSign").permitAll()
 //                  the "/" and "/home" paths are configured to not require any authentication
-                    .anyRequest().authenticated()
+                    //.anyRequest().authenticated()
                     .and()
                 .formLogin()
                     .loginPage("/login")
@@ -35,6 +38,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll();
 
     }
+
+    //private UserDetailsService userDetailsService;
 
     @Bean
     @Override
@@ -65,4 +70,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and()
 //                .withUser("admin").password("admin").roles("ADMIN");
 //    }
+
+//    http://www.doubleh.ie/index.php/2016/09/09/how-to-save-db-user-entity-in-spring-security-authentication-object/
+
+//    http://www.doubleh.ie/index.php/2016/09/09/how-to-save-db-user-entity-in-spring-security-authentication-object/
+//    @Autowired
+//    public SecurityConfiguration(UserDetailsService userDetailsService) {
+//        super();
+//        this.userDetailsService = userDetailsService;
+//
+//    }
+//
+//    @Override
+//    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userDetailsService);
+//    }
+
+    @Bean
+    public UserDetailsService InternalUserDetailsService() {
+        return new InternalUserDetailsService();
+    }
 }

@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <!--https://www.thymeleaf.org/doc/articles/layouts.html-->
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <!--<meta charset="UTF-8" />-->
     <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Title</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />-->
 </head>
 <body>
-    <div th:replace="fragments/header :: header"></div>
+    <th:block th:replace="fragments/header :: header" />
     <div class="container">
-        <div layout:fragment="content">
+        <th:block layout:fragment="content">
             <!-- ============================================================================ -->
             <!-- This content is only used for static prototyping purposes (natural templates)-->
             <!-- and is therefore entirely optional, as this markup fragment will be included -->
@@ -23,9 +24,9 @@
                 Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
                 Phasellus et placerat elit.
             </p>
-        </div>
+        </th:block>
         <!--<div th:replace="fragments/footer :: ${#authentication.principal.isAdmin()} ? 'footer-admin' : 'footer'">&copy; 2014 The Static Templates</div>-->
-        <div th:replace="fragments/footer :: footer">2014 Static Template</div>
+        <th:block th:replace="fragments/footer :: footer" />
     </div>
 </body>
 </html>
