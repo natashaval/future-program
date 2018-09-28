@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--https://www.baeldung.com/thymeleaf-spring-layouts-->
+<!--https://memorynotfound.com/spring-boot-spring-security-thymeleaf-form-login-example/-->
+<!--http://www.mkyong.com/spring-boot/spring-boot-spring-security-thymeleaf-example/-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8" />
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Baeldung</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+</head>
+
+<body>
+    <th:block th:insert="fragments/header :: header" />
+<section layout:fragment="custom-content">
+    <p>Your page content goes here</p>
+    <a href="/customlayout1">Ke Terusan Template</a>
+</section>
+<footer>
+    <p>My template footer</p>
+    <p layout:fragment="custom-footer">Your custom footer here</p>
+    <!--<th:block th:replace="fragments/footer :: footer" />-->
+</footer>
+</body>
+</html>

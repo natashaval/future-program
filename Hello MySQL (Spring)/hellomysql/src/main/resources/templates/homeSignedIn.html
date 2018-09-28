@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--http://www.mkyong.com/spring-boot/spring-boot-spring-security-thymeleaf-example/-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/template.html}"
+>
+<head>
+    <meta charset="UTF-8" />
+    <title>Signed In</title>
+</head>
+<body>
+    <th:block th:replace="fragments/header :: header" />
+
+    <div layout:fragment="custom-content">
+        SUDAH MASUK dan pakai template layout
+        <!--<input type="text" value="${#authentication.principal()}">-->
+    </div>
+
+
+    <div th:replace="fragments/footer :: footer" />
+    <!--<div th:replace="fragments/footer :: ${#authentication.principal.isAdmin()} ? 'footer-admin' : 'footer'">&copy; 2014 The Static Templates</div>-->
+    <div layout:fragment="custom-footer"><h2>Signed In</h2></div>
+</body>
+
+</html>
